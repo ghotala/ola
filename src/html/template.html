@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+<meta>
+    <meta charset="UTF-8" />
+    <title>Aleksandra Hotala - <%= title %></title>
+    <meta name="description" content="<%= description %>" />
+    <link rel="canonical" href="http://psycholog-londyn.co.uk" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Slab|Roboto+Condensed&amp;subset=latin-ext" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" media="screen and (min-width: 550px)" href="css/550px.css" />
+    <link rel="stylesheet" media="screen and (min-width: 700px)" href="css/700px.css" />
+    <link rel="stylesheet" media="screen and (min-width: 900px)" href="css/900px.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="intro">
+        <div class="wrapper">
+            <div class="name">Aleksandra Hotala</div>
+            <h1 class="title"><%= title %></h1>
+        </div>
+    </div>
+
+    <input type="checkbox" id="menu-toggle" />
+
+    <section class="hero">
+        <div class="content">
+            <article class="main">
+                <%= mainContent %>
+            </article>
+            <a class="button button-cta" href="tel:+447438928601">Umow darmowe spotkanie<br />+44 743 8928 601</a>
+        </div>
+        <nav>
+            <div class="header">
+                <div class="photo"></div>
+                <div class="info">
+                    <div class="name">Aleksandra Hotala</div>
+                    <div class="title">Psycholog</div>
+                </div>
+                <label for="menu-toggle" class="button-wrapper">
+                    <div class="button button-round menu-toggle">
+                        <div class="hamburger-container">
+                            <div class="hamburger close">
+                                <div class="bar bar-1"></div>
+                                <div class="bar bar-2"></div>
+                                <div class="bar bar-3"></div>
+                            </div>
+                        </div>
+                    </div>
+                </label>
+            </div>
+            <ul>
+                <li><a href="/o-mnie">Moje kwalifikacje</a></li>
+                <li><a href="/terapia-indywidualna">Terapia indywidualna</a></li>
+                <li><a href="/terapia-par-i-malzenstw">Terapia par</a></li>
+                <li><a href="/sesje-online">Spotkania online</a></li>
+                <li><a href="/ceny-i-terminy">Ceny i terminy</a></li>
+                <li><a href="/kontakt">Kontakt</a></li>
+                <li><a href="/">Strona glowna</a></li>
+            </ul>
+        </nav>
+    </section>
+
+    <header>
+        <div class="options">
+            <a class="button-wrapper phone-wrapper" href="tel:+447438928601">
+                <div class="button button-round phone-button"><svg viewBox="0 0 578.106 578.106"><use xlink:href="assets/icons.svg#phone"></use></svg></div>
+            </a>
+            <div class="photo"></div>
+            <label for="menu-toggle" class="button-wrapper">
+                <div class="button button-round menu-toggle">
+                    <div class="hamburger-container">
+                        <div class="hamburger">
+                            <div class="bar bar-1"></div>
+                            <div class="bar bar-2"></div>
+                            <div class="bar bar-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+        </div>
+    </header>
+
+    <%= lowerContent %>
+</body>
+</html>

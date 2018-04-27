@@ -1,0 +1,79 @@
+@import 'variables';
+
+body {
+  padding-top: 7rem;
+}
+
+.intro {
+  height: 6rem;
+  position: fixed;
+  top: 0;
+  left: calc(20px + 8rem);
+  width: calc(100% - 40px - 15rem);
+  z-index: 2;
+
+  .wrapper {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    .name {
+      text-align: left;
+      color: $color-white;
+      font-size: 1.5rem;
+    }
+
+    .title {
+      text-align: left;
+      font-size: 1.2rem;
+    }
+  }
+}
+
+.hero {
+  nav {
+    left: -400px;
+    width: 400px;
+    box-shadow: inset -5px 0 5px 0px $color-dark-grey;
+
+    .header .menu-toggle {
+      display: none;
+    }
+  }
+}
+
+#menu-toggle {
+  &:checked {
+    ~ header {
+      .hamburger {
+        .bar {
+          &-1 {
+            transform: rotate(-45deg) translate(-6px,6px);
+          }
+          &-2 {
+            opacity: 0;
+          }
+          &-3 {
+            transform: rotate(45deg) translate(-6.5px, -7px);
+          }
+        }
+      }
+    }
+  }
+}
+
+header {
+  .options {
+    padding: 0 20px;
+    justify-content: space-between;
+    top: 50%;
+
+    .button-round {
+      box-shadow: 0 0px 2px 1px $color-dark-grey;
+    }
+
+    .phone-wrapper {
+      display: none;
+    }
+  }
+}

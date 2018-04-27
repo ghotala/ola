@@ -1,0 +1,31 @@
+.menu-toggle {
+  display: none;
+}
+
+.hero {
+  nav {
+    position: static;
+    width: 250px;
+    margin-left: 20px;
+    height: auto;
+    flex-grow: 1;
+    flex-shrink: 0;
+    box-shadow: none;
+    z-index: 0;
+
+    .header {
+      display: none;
+    }
+  }
+}
+
+.services {
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: transparent;
+
+  article {
+    width: 50%;
+    margin-bottom: 20px;
+  }
+}
