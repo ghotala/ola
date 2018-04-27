@@ -4,15 +4,16 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: $font-sans;
 }
 
 body {
+  font-family: $font-sans;
   font-size: 16px;
   color: $color-black;
   line-height: 1.5rem;
   background-color: $color-light-grey;
   padding-top: 10.5rem;
+  overflow-x: hidden;
 }
 
 div, header, article, ul, .button {
@@ -212,25 +213,26 @@ a {
     }
 
     ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
       margin: 20px 0;
       padding: 0;
-    }
-  }
-  nav ul {
-    margin: 20px 0;
-    padding: 0;
+      height: calc(100% - 6rem - 40px);
+      max-height: 28rem;
 
-    li {
-      font-size: 1rem;
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-      line-height: 3rem;
+      li {
+        font-size: 1rem;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        line-height: 3rem;
 
-      a {
-        display: block;
-        border-bottom: none;
-        padding: 0 20px;
+        a {
+          display: block;
+          border-bottom: none;
+          padding: 0 20px;
+        }
       }
     }
   }

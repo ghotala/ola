@@ -64,6 +64,8 @@ a:hover {
     }
 
     ul {
+      display: block;
+
       li {
         a {
           &:hover {
