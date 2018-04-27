@@ -4,6 +4,12 @@ body {
   padding-top: 7rem;
 }
 
+.hamburger {
+  .bar {
+    transition: 0.5s;
+  }
+}
+
 .intro {
   height: 6rem;
   position: fixed;
@@ -26,11 +32,21 @@ body {
     .title {
       text-align: left;
       font-size: 1.2rem;
+      color: $color-dark-grey;
     }
   }
 }
 
 .hero {
+  .content {
+    .button-cta-wrapper {
+      animation-name: zoom-in-buzz-zoom-out;
+      animation-duration: 30s;
+      animation-delay: 5s;
+      animation-iteration-count: infinite;
+    }
+  }
+
   nav {
     left: -400px;
     width: 400px;

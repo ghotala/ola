@@ -64,27 +64,12 @@ a {
   text-decoration: none;
   color: $color-light-blue;
   border-bottom: 1px dotted;
-  transition: 0.25s;
-  background-image: linear-gradient($color-light-grey, $color-light-grey);
-  background-size: 0% 100%;
-  background-repeat: no-repeat;
-}
-
-a:hover {
-  background-size: 100% 100%;
 }
 
 .button-wrapper {
   padding: 1.5rem;
   border-bottom: none;
   cursor: pointer;
-  transition: 0.25s;
-  background-image: none !important;
-}
-
-.button-wrapper:hover {
-  position: relative;
-  transform: scale(1.25)rotate(360deg);
 }
 
 .button-round {
@@ -103,7 +88,6 @@ a:hover {
     background-color: $color-white;
     margin: 5px 0;
     border-radius: 2px;
-    transition: 0.5s;
   }
 
   &.close {
@@ -148,26 +132,25 @@ a:hover {
     display: flex;
     flex-direction: column-reverse;
 
-    .button-cta {
-      display: block;
-      font-family: $font-sans;
-      background-color: $color-green;
-      border: none;
-      font-size: 1em;
-      color: $color-white;
-      padding: 10px;
+    .button-cta-wrapper {
+      height: calc(3rem + 20px);
       margin: 0 0 20px;
-      width: 100%;
-      line-height: 1.5em;
-      text-align: center;
-      transition: 0.25s;
-      background-image: linear-gradient($color-light-blue, $color-light-blue);
-      background-size: 0% 100%;
-      background-repeat: no-repeat;
-    }
 
-    .button-cta:hover {
-      background-size: 100% 100%;
+      .button-cta {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        display: block;
+        font-family: $font-sans;
+        background-color: $color-green;
+        border: none;
+        font-size: 1em;
+        color: $color-white;
+        padding: 10px;
+        width: 100%;
+        line-height: 1.5em;
+        text-align: center;
+      }
     }
 
     .main {
@@ -248,12 +231,106 @@ a:hover {
         display: block;
         border-bottom: none;
         padding: 0 20px;
-
-        &:hover {
-          background-size: 100% 100%;
-        }
       }
     }
+  }
+}
+
+@keyframes spin-in-buzz-spin-out {
+  0% {
+    animation-timing-function: linear;
+    transform: scale(1)rotate(0deg)translateY(0);
+  }
+  1% {
+    transform: scale(1.25)rotate(360deg)translateX(0);
+  }
+  3% {
+    transform: scale(1.25)rotate(360deg)translateX(0);
+  }
+  3.25% {
+    transform: scale(1.25)rotate(360deg)translateX(-1%);
+  }
+  3.5% {
+    transform: scale(1.25)rotate(360deg)translateX(1%);
+  }
+  3.75% {
+    transform: scale(1.25)rotate(360deg)translateX(-1%);
+  }
+  4% {
+    transform: scale(1.25)rotate(360deg)translateX(1%);
+  }
+  4.25% {
+    transform: scale(1.25)rotate(360deg)translateX(-1%);
+  }
+  4.5% {
+    transform: scale(1.25)rotate(360deg)translateX(1%);
+  }
+  4.75% {
+    transform: scale(1.25)rotate(360deg)translateX(-1%);
+  }
+  5% {
+    transform: scale(1.25)rotate(360deg)translateX(1%);
+  }
+  5.25% {
+    transform: scale(1.25)rotate(360deg)translateX(-1%);
+  }
+  5.5% {
+    transform: scale(1.25)rotate(360deg)translateX(0%);
+  }
+  14% {
+    transform: scale(1.25)rotate(360deg)translateY(0);
+  }
+  15% {
+    transform: scale(1)rotate(0deg)translateY(0);
+  }
+}
+
+@keyframes zoom-in-buzz-zoom-out {
+  0% {
+    animation-timing-function: linear;
+    transform: scale(1)translateX(0);
+  }
+  1% {
+    transform: scale(1.1)translateX(0);
+  }
+  3% {
+    transform: scale(1.1)translateX(0);
+  }
+  3.25% {
+    transform: scale(1.1)translateX(-1%);
+  }
+  3.5% {
+    transform: scale(1.1)translateX(1%);
+  }
+  3.75% {
+    transform: scale(1.1)translateX(-1%);
+  }
+  4% {
+    transform: scale(1.1)translateX(1%);
+  }
+  4.25% {
+    transform: scale(1.1)translateX(-1%);
+  }
+  4.5% {
+    transform: scale(1.1)translateX(1%);
+  }
+  4.75% {
+    transform: scale(1.1)translateX(-1%);
+  }
+  5% {
+    transform: scale(1.1)translateX(1%);
+  }
+  5.25% {
+    transform: scale(1.1)translateX(-1%);
+  }
+  5.5% {
+    transform: scale(1.1)translateX(0%);
+  }
+  14% {
+    transform: scale(1.1)translateX(0);
+  }
+  15% {
+    transform: scale(1)rotate(0deg)translateX(0);
   }
 }
 
@@ -268,7 +345,7 @@ header {
   z-index: 1;
 
   .options {
-    position: absolute;
+    position: relative;
     top: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -281,11 +358,18 @@ header {
       height: 7rem;
     }
 
-    .phone-button {
-      background-color: $color-green;
+    .phone-wrapper {
+      animation-name: spin-in-buzz-spin-out;
+      animation-duration: 30s;
+      animation-delay: 5s;
+      animation-iteration-count: infinite;
 
-      svg {
-        width: 50%;
+      .phone-button {
+        background-color: $color-green;
+
+        svg {
+          width: 50%;
+        }
       }
     }
   }

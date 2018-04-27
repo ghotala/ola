@@ -17,7 +17,7 @@ module.exports = function (grunt, options) {
       files: {
         'tmp/550px.css': 'src/scss/550px.scss',
         'tmp/700px.css': 'src/scss/700px.scss',
-        'tmp/900px.css': 'src/scss/900px.scss'
+        'tmp/960px.css': 'src/scss/960px.scss'
       }
     }
   };
