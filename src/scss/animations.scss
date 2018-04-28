@@ -1,0 +1,30 @@
+@mixin buzz($buzz-duration, $buzz-frequency, $buzz-delay, $idle-time) {
+    $total-time: $buzz-duration + $buzz-delay + $idle-time;
+    $buzz-count: floor($buzz-duration * $buzz-frequency);
+    $buzz-start: $buzz-delay / $total-time;
+    $single-buzz: 1 / ($buzz-frequency * $total-time);
+    $buzz-end: $buzz-start + $buzz-count * $single-buzz;
+    @keyframes buzz {
+        0% {
+            transform: 0;
+        }
+
+        #{percentage($buzz-start)} {
+            transform: 0;
+        }
+
+        @for $buzz-index from 1 to $buzz-count {            
+            #{percentage($buzz-start + $single-buzz * $buzz-index)} {
+                @if ($buzz-index % 2 == 0) {
+                    transform: translateX(-1%)
+                }
+                @else {
+                    transform: translateX(1%)
+                }
+            }
+        }
+        #{percentage($buzz-end)} {
+            transform: 0;
+        }
+    }
+}
