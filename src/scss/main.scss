@@ -1,4 +1,5 @@
 @import 'variables';
+@import 'animations';
 
 html, body {
   margin: 0;
@@ -84,7 +85,7 @@ div, header, article, ul, .button {
 
 .menu-toggle {
   .icon-wrapper {
-    background-color: $color-yellow;
+    background-color: $color-black;
   }
 
   .hamburger-container {
@@ -92,13 +93,26 @@ div, header, article, ul, .button {
   }
 }
 
+.button-cta-wrapper {
+  display: none !important;
+}
+
+@include buzz(2%, 2, 16, 2, 8);
+@include zoom-in-out(1.33, 0.5, 3, 2, 6);
 .phone-button {
+  background-color: $color-green;
+  color: $color-white;
+
   .icon-wrapper {
-    background-color: $color-green;
+    background-color: $color-white;
+    animation: zoom-in-out 12s infinite;
+    border: 1px $color-green solid;
   }
 
   svg {
     width: 50%;
+    animation: buzz 12s infinite;
+    fill: $color-green
   }
 }
 

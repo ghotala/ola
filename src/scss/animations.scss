@@ -1,4 +1,4 @@
-@mixin buzz($buzz-duration, $buzz-frequency, $buzz-delay, $idle-time) {
+@mixin buzz($shift, $buzz-duration, $buzz-frequency, $buzz-delay, $idle-time) {
     $total-time: $buzz-duration + $buzz-delay + $idle-time;
     $buzz-count: floor($buzz-duration * $buzz-frequency);
     $buzz-start: $buzz-delay / $total-time;
@@ -6,25 +6,54 @@
     $buzz-end: $buzz-start + $buzz-count * $single-buzz;
     @keyframes buzz {
         0% {
-            transform: 0;
+            transform: none;
         }
 
         #{percentage($buzz-start)} {
-            transform: 0;
+            transform: none;
         }
 
         @for $buzz-index from 1 to $buzz-count {            
             #{percentage($buzz-start + $single-buzz * $buzz-index)} {
                 @if ($buzz-index % 2 == 0) {
-                    transform: translateX(-1%)
+                    transform: translateX(#{$shift * -1});
                 }
                 @else {
-                    transform: translateX(1%)
+                    transform: translateX($shift);
                 }
             }
         }
         #{percentage($buzz-end)} {
-            transform: 0;
+            transform: none;
+        }
+    }
+}
+
+@mixin zoom-in-out($scale, $transition-duration, $zoom-duration, $zoom-delay, $idle-time) {
+    $total-time: $transition-duration * 2 + $zoom-duration + $zoom-delay + $idle-time;
+    $zoom-in-start: $zoom-delay / $total-time;
+    $zoom-in-end: $zoom-in-start + ($transition-duration / $total-time);
+    $zoom-out-start: $zoom-in-end + ($zoom-duration / $total-time);
+    $zoom-out-end: $zoom-out-start + ($transition-duration / $total-time);    
+    @keyframes zoom-in-out {
+        0% {
+            transform: none;
+        }
+
+        #{percentage($zoom-in-start)} {
+            transform: none;
+        }
+
+        #{percentage($zoom-in-end)} {
+            transform: scale($scale);
+        }
+
+        #{percentage($zoom-out-start)} {
+            transform: scale($scale);
+        }
+
+        #{percentage($zoom-out-end)} {
+            transform: none;
         }
     }
 }
