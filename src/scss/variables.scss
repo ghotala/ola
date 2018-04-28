@@ -9,3 +9,9 @@ $color-green: #43C057;
 $color-yellow: #FFCD33;
 $color-light-grey: whitesmoke;
 $color-dark-grey: #e3e3e3;
+
+$button-size: 3rem;
+$spacing-default: 1rem;
+
+$header-height: $button-size + 2 * $spacing-default;
+$body-padding: $header-height;

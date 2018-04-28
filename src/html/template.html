@@ -14,6 +14,7 @@
 <body>
     <div class="intro">
         <div class="wrapper">
+            <div class="photo"></div>            
             <div class="name">Aleksandra Hotala</div>
             <h1 class="title"><%= title %></h1>
         </div>
@@ -39,11 +40,13 @@
                 </div>
                 <label for="menu-toggle" class="button-wrapper">
                     <div class="button button-round menu-toggle">
-                        <div class="hamburger-container">
-                            <div class="hamburger close">
-                                <div class="bar bar-1"></div>
-                                <div class="bar bar-2"></div>
-                                <div class="bar bar-3"></div>
+                        <div class="icon-wrapper">
+                            <div class="hamburger-container">
+                                <div class="hamburger close">
+                                    <div class="bar bar-1"></div>
+                                    <div class="bar bar-2"></div>
+                                    <div class="bar bar-3"></div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -62,13 +65,17 @@
     </section>
 
     <header>
-        <div class="options">
-            <a class="button-wrapper phone-wrapper nohover" href="tel:+447438928601">
-                <div class="button button-round phone-button"><svg viewBox="0 0 578.106 578.106"><use xlink:href="assets/icons.svg#phone"></use></svg></div>
-            </a>
-            <div class="photo"></div>
-            <label for="menu-toggle" class="button-wrapper">
-                <div class="button button-round menu-toggle">
+        <a class="button-wrapper phone-wrapper nohover" href="tel:+447438928601">
+            <div class="button button-round phone-button">
+                <div class="icon-wrapper">
+                    <svg viewBox="0 0 578.106 578.106"><use xlink:href="assets/icons.svg#phone"></use></svg>
+                </div>
+                <div class="caption">Darmowe spotkanie</div>
+            </div>
+        </a>
+        <label for="menu-toggle" class="button-wrapper">
+            <div class="button button-round menu-toggle">
+                <div class="icon-wrapper">
                     <div class="hamburger-container">
                         <div class="hamburger">
                             <div class="bar bar-1"></div>
@@ -77,8 +84,8 @@
                         </div>
                     </div>
                 </div>
-            </label>
-        </div>
+            </div>
+        </label>
     </header>
 
     <%= lowerContent %>
