@@ -241,8 +241,8 @@ a {
     z-index: 3;
 
     .header {
-      height: 6rem;
-      padding: 0 $spacing-default;
+      height: $header-height;
+      padding-left: $spacing-default;
       display: flex;
       justify-content: space-between;
       align-items: center;
