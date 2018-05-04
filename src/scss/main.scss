@@ -20,23 +20,10 @@ html {
 body {
   color: $color-black;
   background-color: $color-light-grey;
-  padding-top: $body-padding;
   overflow-x: hidden;
 }
 
-#menu-toggle {
-  display: none;
-
-  &:checked {
-    ~ .hero {
-      nav {
-        left: 0;
-      }
-    }
-  }
-}
-
-div, header, article, ul, .button, footer {
+div, article, ul, .button, footer, nav {
   display: block;
   box-sizing: border-box;
 }
@@ -84,21 +71,17 @@ footer {
   }  
 }
 
-#menu-toggle {
-  &:checked {
-    ~ header {
-      .hamburger {
-        .bar {
-          &-1 {
-            transform: rotate(-45deg) translate(-6px,6px);
-          }
-          &-2 {
-            opacity: 0;
-          }
-          &-3 {
-            transform: rotate(45deg) translate(-6.5px, -7px);
-          }
-        }
+.toggle-wrapper.opened{
+  .hamburger {
+    .bar {
+      &-1 {
+        transform: rotate(-45deg) translate(-6px,6px);
+      }
+      &-2 {
+        opacity: 0;
+      }
+      &-3 {
+        transform: rotate(45deg) translate(-6.5px, -7px);
       }
     }
   }
@@ -118,6 +101,22 @@ footer {
 @include zoom-in-out(1.33, 0.5, 3, 2, 6);
 @include reverse-colors($color-white, $color-green, 0.5, 3, 2, 6);
 
+body > .phone-wrapper {
+  transition: 0.5s;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+}
+
+body > .toggle-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index:10;
+}
+
 .phone-button {
   background-color: $color-green;
   color: $color-white;
@@ -133,21 +132,6 @@ footer {
     width: 50%;
     //animation: buzz 12s infinite;
   }
-}
-
-header {
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: $header-height;
-  background-color: $color-light-grey;
-  padding: 0;
-  z-index: 1;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  box-shadow: 0 3px 3px 0 $color-dark-grey;
 }
 
 h1, h2, h3, h3 {
@@ -226,14 +210,15 @@ a {
 
 nav {
   position: fixed;
-  top: $header-height;
+  top: 0;
   left: -100%;
   margin: 0;
   width: 100%;
-  height: calc(100% - #{$header-height});
+  height: 100%;
   background-color: $color-white;
   transition: 0.5s;
-  z-index: 3;    
+  padding-top: $header-height;
+  z-index: 3; 
 
   ul {
     display: flex;
@@ -264,6 +249,10 @@ nav {
       }
     }
   }
+}
+
+nav.opened {
+  left: 0;
 }
 
 .hero {

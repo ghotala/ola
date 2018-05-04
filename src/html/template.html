@@ -13,13 +13,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+    <a class="button-wrapper phone-wrapper nohover" href="tel:+447438928601">
+        <div class="button button-round phone-button">
+            <div class="icon-wrapper">
+                <svg viewBox="0 0 578.106 578.106"><use xlink:href="assets/icons.svg#phone"></use></svg>
+            </div>
+            <div class="caption">Darmowe spotkanie</div>
+        </div>
+    </a>
+    <a class="button-wrapper toggle-wrapper">
+        <div class="button button-round menu-toggle">
+            <div class="icon-wrapper">
+                <div class="hamburger-container">
+                    <div class="hamburger">
+                        <div class="bar bar-1"></div>
+                        <div class="bar bar-2"></div>
+                        <div class="bar bar-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
     <section class="intro">
         <div class="photo"></div>            
         <div class="name">Aleksandra Hotala</div>
         <h1 class="title"><%= title %></h1>
     </section>
-
-    <input type="checkbox" id="menu-toggle" />
 
     <section class="hero">
         <article class="main">
@@ -37,30 +56,6 @@
             </ul>
         </nav>
     </section>
-
-    <header>
-        <a class="button-wrapper phone-wrapper nohover" href="tel:+447438928601">
-            <div class="button button-round phone-button">
-                <div class="icon-wrapper">
-                    <svg viewBox="0 0 578.106 578.106"><use xlink:href="assets/icons.svg#phone"></use></svg>
-                </div>
-                <div class="caption">Darmowe spotkanie</div>
-            </div>
-        </a>
-        <label for="menu-toggle" class="button-wrapper">
-            <div class="button button-round menu-toggle">
-                <div class="icon-wrapper">
-                    <div class="hamburger-container">
-                        <div class="hamburger">
-                            <div class="bar bar-1"></div>
-                            <div class="bar bar-2"></div>
-                            <div class="bar bar-3"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </label>
-    </header>
 
     <%= lowerContent %>
     
@@ -80,5 +75,35 @@
         <img class="hidden" itemprop="http://schema.org/image" src="assets/aleksandra_hotala.jpg" />
         <span class="hidden" itemprop="http://schema.org/url">http://psycholog-londyn.co.uk</span>
     </footer>
+
+    <script>
+        var ctaHeader = document.querySelector('body > a.phone-wrapper');
+        var ctaBody = document.querySelector('.hero a.phone-wrapper');
+        var menuToggle = document.querySelector('a.toggle-wrapper');
+        var nav = document.querySelector('nav');
+        function setCtaHeaderVisibility() {
+            var rect = ctaBody.getBoundingClientRect();
+            if (rect.bottom <=0 || rect.top >= window.innerHeight) {
+                ctaHeader.style.opacity = 1;
+            }
+            else {
+                ctaHeader.style.opacity = 0;
+            }
+        }
+
+        function toggleMenu() {
+            menuToggle.classList.toggle('opened');
+            nav.classList.toggle('opened');
+        }
+
+        if (ctaBody && ctaHeader) {
+            setCtaHeaderVisibility();
+            window.addEventListener('scroll', setCtaHeaderVisibility);
+        }
+
+        if (menuToggle && nav) {
+            menuToggle.addEventListener('click', toggleMenu);
+        }
+    </script>    
 </body>
 </html>
