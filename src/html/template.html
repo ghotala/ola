@@ -6,60 +6,34 @@
     <meta name="description" content="<%= description %>" />
     <link rel="canonical" href="http://psycholog-londyn.co.uk" />
     <link rel="stylesheet" href="css/main.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Roboto+Condensed&amp;subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" media="(min-width: 550px)" href="css/550px.css" />
     <link rel="stylesheet" media="(min-width: 700px)" href="css/700px.css" />
     <link rel="stylesheet" media="(min-width: 960px)" href="css/960px.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <div class="intro">
-        <div class="wrapper">
-            <div class="photo"></div>            
-            <div class="name">Aleksandra Hotala</div>
-            <h1 class="title"><%= title %></h1>
-        </div>
-    </div>
+    <section class="intro">
+        <div class="photo"></div>            
+        <div class="name">Aleksandra Hotala</div>
+        <h1 class="title"><%= title %></h1>
+    </section>
 
     <input type="checkbox" id="menu-toggle" />
 
     <section class="hero">
-        <div class="content">
-            <article class="main">
-                <%= mainContent %>
-            </article>
-            <div class="button-cta-wrapper">
-                <a class="button button-cta" href="tel:+447438928601">Umow darmowe spotkanie<br />+44 743 8928 601</a>
-            </div>
-        </div>
+        <article class="main">
+            <%= mainContent %>
+        </article>
         <nav>
-            <div class="header">
-                <div class="photo"></div>
-                <div class="info">
-                    <div class="name">Aleksandra Hotala</div>
-                    <div class="title">Psycholog</div>
-                </div>
-                <label for="menu-toggle" class="button-wrapper">
-                    <div class="button button-round menu-toggle">
-                        <div class="icon-wrapper">
-                            <div class="hamburger-container">
-                                <div class="hamburger close">
-                                    <div class="bar bar-1"></div>
-                                    <div class="bar bar-2"></div>
-                                    <div class="bar bar-3"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </label>
-            </div>
             <ul>
-                <li><a href="/o-mnie">Moje kwalifikacje</a></li>
-                <li><a href="/terapia-indywidualna">Terapia indywidualna</a></li>
-                <li><a href="/terapia-par-i-malzenstw">Terapia par</a></li>
-                <li><a href="/sesje-online">Spotkania online</a></li>
-                <li><a href="/ceny-i-terminy">Ceny i terminy</a></li>
-                <li><a href="/kontakt">Kontakt</a></li>
-                <li><a href="/">Strona glowna</a></li>
+                <li><a href="/o-mnie"><svg><use xlink:href="assets/icons.svg#graduation"></use></svg>Moje kwalifikacje</a></li>
+                <li><a href="/terapia-indywidualna"><svg><use xlink:href="assets/icons.svg#person"></use></svg>Terapia indywidualna</a></li>
+                <li><a href="/terapia-par-i-malzenstw"><svg><use xlink:href="assets/icons.svg#couple"></use></svg>Terapia par</a></li>
+                <li><a href="/sesje-online"><svg><use xlink:href="assets/icons.svg#skype"></use></svg>Spotkania online</a></li>
+                <li><a href="/ceny-i-terminy"><svg><use xlink:href="assets/icons.svg#calendar"></use></svg>Ceny i terminy</a></li>
+                <li><a href="/kontakt"><svg><use xlink:href="assets/icons.svg#phone"></use></svg>Kontakt</a></li>
+                <li><a href="/"><svg><use xlink:href="assets/icons.svg#home"></use></svg>Strona glowna</a></li>
             </ul>
         </nav>
     </section>
@@ -89,5 +63,22 @@
     </header>
 
     <%= lowerContent %>
+    
+    <footer itemscope itemtype="http://schema.org/LocalBusiness">
+        <p itemprop="http://schema.org/name">Aleksandra Hotala - polski psycholog w Londynie</p> 
+        <span class="hidden" itemprop="http://schema.org/description">Darmowe pierwsze spotkanie. Terapia indywidualna i terapia par w gabinecie oraz online.</span>
+        <p itemprop="http://schema.org/telephone" content="+447438928601">+44 743 8928 601</p>
+        <p itemprop="http://schema.org/address" itemscope itemtype="http://schema.org/PostalAddress">
+            <span itemprop="http://schema.org/streetAddress">180-186 King's Cross Road</span>
+            <br />
+            <span itemprop="http://schema.org/postalCode">N8 7AL</span>
+            <span itemprop="http://schema.org/addressLocality">London</span>
+            <span class="hidden" itemprop="http://schema.org/addressRegion">England</span>
+            <span class="hidden" itemprop="http://schema.org/addressCountry">GB</span>
+        </p>
+        <time class="hidden" itemprop="http://schema.org/openingHours" datetime="Mo-Su"></time>
+        <img class="hidden" itemprop="http://schema.org/image" src="assets/aleksandra_hotala.jpg" />
+        <span class="hidden" itemprop="http://schema.org/url">http://psycholog-londyn.co.uk</span>
+    </footer>
 </body>
 </html>

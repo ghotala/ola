@@ -1,5 +1,9 @@
 @import 'variables';
 
+html {
+  line-height: 1.5em;  
+}
+
 a{
   transition: 0.25s;
   background-image: linear-gradient($color-light-grey, $color-light-grey);
@@ -25,52 +29,23 @@ a:hover {
   display: none;
 }
 
-.hero {
-  .content {
-    .button-cta-wrapper {
-      position: fixed;
-      z-index: 2;
-      top: 0;
-      height: 6rem;
-      right: 20px;
+nav {
+  position: static;
+  width: 14rem;
+  margin-left: $spacing-default;
+  height: auto;
+  flex-grow: 1;
+  flex-shrink: 0;
+  box-shadow: none;
+  z-index: 0;
 
-      .button-cta {
-        padding: 10px 30px;
-        border-radius: 5px;
-        transition: 0.25s;
-        background-image: linear-gradient($color-light-blue, $color-light-blue);
-        background-size: 0% 100%;
-        background-repeat: no-repeat;
+  ul {
+    display: block;
 
+    li {
+      a {
         &:hover {
           background-size: 100% 100%;
-        }
-      }
-    }
-  }
-
-  nav {
-    position: static;
-    width: 250px;
-    margin-left: 20px;
-    height: auto;
-    flex-grow: 1;
-    flex-shrink: 0;
-    box-shadow: none;
-    z-index: 0;
-
-    .header {
-      display: none;
-    }
-
-    ul {
-      display: block;
-
-      li {
-        a {
-          &:hover {
-            background-size: 100% 100%;
-          }
         }
       }
     }
@@ -84,6 +59,6 @@ a:hover {
 
   article {
     width: 50%;
-    margin-bottom: 20px;
+    margin-bottom: $spacing-default;
   }
 }

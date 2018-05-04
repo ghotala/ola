@@ -1,17 +1,24 @@
 @import 'variables';
 @import 'animations';
 
+.hidden {
+  display: none;
+}
+
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
 }
 
-body {
+html {
   font-family: $font-sans;
-  font-size: 16px;
+  font-size: $font-size;
+  line-height: 1.33em;
+}
+
+body {
   color: $color-black;
-  line-height: 1.5rem;
   background-color: $color-light-grey;
   padding-top: $body-padding;
   overflow-x: hidden;
@@ -29,9 +36,15 @@ body {
   }
 }
 
-div, header, article, ul, .button {
+div, header, article, ul, .button, footer {
   display: block;
   box-sizing: border-box;
+}
+
+footer {
+  font-size: 0.83rem;
+  padding: $spacing-default #{$spacing-default + $spacing-horizontal};
+  background-color: $color-dark-grey;  
 }
 
 .button-wrapper {
@@ -66,18 +79,25 @@ div, header, article, ul, .button {
     background-color: $color-white;
     margin: 5px 0;
     border-radius: 2px;
-  }
+    transition: 0.5s;
+  }  
+}
 
-  &.close {
-    .bar {
-      &-1 {
-        transform: rotate(-45deg) translate(-6px,6px);
-      }
-      &-2 {
-        opacity: 0;
-      }
-      &-3 {
-        transform: rotate(45deg) translate(-6.5px, -7px);
+#menu-toggle {
+  &:checked {
+    ~ header {
+      .hamburger {
+        .bar {
+          &-1 {
+            transform: rotate(-45deg) translate(-6px,6px);
+          }
+          &-2 {
+            opacity: 0;
+          }
+          &-3 {
+            transform: rotate(45deg) translate(-6.5px, -7px);
+          }
+        }
       }
     }
   }
@@ -93,26 +113,24 @@ div, header, article, ul, .button {
   }
 }
 
-.button-cta-wrapper {
-  display: none !important;
-}
-
 @include buzz(2%, 2, 16, 2, 8);
 @include zoom-in-out(1.33, 0.5, 3, 2, 6);
+@include reverse-colors($color-white, $color-green, 0.5, 3, 2, 6);
+
 .phone-button {
   background-color: $color-green;
   color: $color-white;
 
   .icon-wrapper {
-    background-color: $color-white;
-    animation: zoom-in-out 12s infinite;
+    background-color: $color-green;
+    animation: zoom-in-out 12s infinite, reverse-colors 12s infinite;
     border: 1px $color-green solid;
+    fill: $color-white;
   }
 
   svg {
     width: 50%;
     animation: buzz 12s infinite;
-    fill: $color-green
   }
 }
 
@@ -128,32 +146,47 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  box-shadow: 0 3px 3px 0 $color-dark-grey;
 }
 
-h1 {
+h1, h2, h3, h3 {
   font-family: $font-serif;
   font-weight: normal;
-  color: $color-light-blue;
-  font-size: 1.33rem;
+  color: $color-light-blue;  
+}
+h1 { 
+  font-size: 1.825rem;
+  line-height: 1.25em;
+}
+h2 { 
+  font-size: 1.5rem;
+  line-height: 1.25em;
+}
+h3 { 
+  font-size: 1.325rem;
+  line-height: 1.2em;
+}
+h4 { 
+  font-size: 1.15rem;
+  line-height: 1.15em;
 }
 
 .name {
   font-family: $font-serif;
   text-align: center;
-  font-size: 1.33rem;
+  font-size: 1.5rem;
 }
 
 .title {
   font-family: $font-sans;
-  font-size: 1rem;
-  font-variant: all-small-caps;
-  line-height: 1rem;
+  font-size: 1.25rem;
+  line-height: 1.125rem;
   color: $color-light-blue;
-  margin: 0;
   text-align: center;
 }
 
 .intro {
+  margin-top: $spacing-default;
   margin-bottom: $spacing-default;
 
   .photo {
@@ -163,8 +196,8 @@ h1 {
   }
 }
 
-article {
-  padding: $spacing-default;
+article {  
+  padding: $spacing-default $spacing-horizontal;
   background-color: $color-white;
 }
 
@@ -174,13 +207,62 @@ a {
   border-bottom: 1px dotted;
 }
 
+.nolink {
+  a {
+    color: $color-black;
+    border-bottom: none;
+  }
+}
+
 .photo {
   background-color: $color-white;
-  background: url('../assets/aleksandra-hotala.png');
+  background: url('../assets/aleksandra-hotala.jpg');
   background-position: center;
   background-size: cover;
   border-radius: 50%;
   box-shadow: 0 2px 2px 1px $color-dark-grey;
+}
+
+nav {
+  position: fixed;
+  top: $header-height;
+  left: -100%;
+  margin: 0;
+  width: 100%;
+  height: calc(100% - #{$header-height});
+  background-color: $color-white;
+  transition: 0.5s;
+  z-index: 3;    
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: $spacing-default 0;
+    padding: 0;
+
+    li {
+      font-size: 1rem;
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      line-height: 3rem;
+
+      a {
+        display: flex;
+        align-items: center;
+        border-bottom: 1px $color-light-grey solid;
+        padding: 0 $spacing-default;
+
+        svg {
+          width: 1.5rem;
+          height: 1.5rem;
+          margin-right: 1rem;
+          fill: $color-light-blue;
+        }
+      }
+    }
+  }
 }
 
 .hero {
@@ -188,120 +270,19 @@ a {
   display: flex;
   flex-direction: row;
 
-  .content {
+  .main {
     flex-grow: 1;
-    display: flex;
-    flex-direction: column-reverse;
-
-    .button-cta-wrapper {
-      height: calc(3rem + #{$spacing-default});
-      margin: 0 0 $spacing-default;
-
-      .button-cta {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-        display: block;
-        font-family: $font-sans;
-        background-color: $color-green;
-        border: none;
-        font-size: 1em;
-        color: $color-white;
-        padding: $spacing-default / 2;
-        width: 100%;
-        line-height: 1.5em;
-        text-align: center;
-      }
-    }
-
-    .main {
-      background-color: $color-white;
-      box-shadow: 3px 3px 3px 0px $color-dark-grey;
-      border-radius: 5px;
-      flex-grow: 1;
-
-      .nolink {
-        a {
-          color: $color-black;
-          border-bottom: none;
-        }
-      }
-    }
-  }
-
-  nav {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    margin: 0;
-    width: 100%;
-    height: 100%;
     background-color: $color-white;
-    transition: 0.5s;
-    z-index: 3;
-
-    .header {
-      height: $header-height;
-      padding-left: $spacing-default;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: $color-light-grey;
-
-      .photo {
-        width: 4rem;
-        height: 4rem;
-      }
-
-      .info {
-        flex-grow: 1;
-        padding-left: 1rem;
-
-        .name {
-          font-size: 1rem;
-          text-align: left;
-        }
-
-        .title {
-          margin: 0;
-          font-size: 1rem;
-          font-variant: all-small-caps;
-          line-height: 1rem;
-          text-align: left;
-        }
-      }
-    }
-
-    ul {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      margin: $spacing-default 0;
-      padding: 0;
-      height: calc(100% - 6rem - 40px);
-      max-height: 28rem;
-
-      li {
-        font-size: 1rem;
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        line-height: 3rem;
-
-        a {
-          display: block;
-          border-bottom: none;
-          padding: 0 $spacing-default;
-        }
-      }
-    }
+    box-shadow: 3px 3px 3px 0px $color-dark-grey;
+    border-radius: 5px;
+    flex-grow: 1;
   }
 }
 
 .services {
   display: flex;
   flex-direction: column;
-  padding: 0 $spacing-default;
+  padding: 0 $spacing-default $spacing-default;
 }
 
 svg#defs {
@@ -309,7 +290,3 @@ svg#defs {
   z-index: -1;
   height: 0;
 }
-/*** NAV ***/
-
-
-/*** NAV END ***/

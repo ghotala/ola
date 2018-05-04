@@ -1,7 +1,7 @@
-@mixin buzz($shift, $buzz-duration, $buzz-frequency, $buzz-delay, $idle-time) {
-    $total-time: $buzz-duration + $buzz-delay + $idle-time;
+@mixin buzz($shift, $buzz-duration, $buzz-frequency, $delay, $idle-time) {
+    $total-time: $buzz-duration + $delay + $idle-time;
     $buzz-count: floor($buzz-duration * $buzz-frequency);
-    $buzz-start: $buzz-delay / $total-time;
+    $buzz-start: $delay / $total-time;
     $single-buzz: 1 / ($buzz-frequency * $total-time);
     $buzz-end: $buzz-start + $buzz-count * $single-buzz;
     @keyframes buzz {
@@ -29,31 +29,65 @@
     }
 }
 
-@mixin zoom-in-out($scale, $transition-duration, $zoom-duration, $zoom-delay, $idle-time) {
-    $total-time: $transition-duration * 2 + $zoom-duration + $zoom-delay + $idle-time;
-    $zoom-in-start: $zoom-delay / $total-time;
-    $zoom-in-end: $zoom-in-start + ($transition-duration / $total-time);
-    $zoom-out-start: $zoom-in-end + ($zoom-duration / $total-time);
-    $zoom-out-end: $zoom-out-start + ($transition-duration / $total-time);    
+@mixin zoom-in-out($scale, $transition-duration, $wait-duration, $delay, $idle-time) {
+    $total-time: $transition-duration * 2 + $wait-duration + $delay + $idle-time;
+    $transition-in-start: $delay / $total-time;
+    $transition-in-end: $transition-in-start + ($transition-duration / $total-time);
+    $transition-out-start: $transition-in-end + ($wait-duration / $total-time);
+    $transition-out-end: $transition-out-start + ($transition-duration / $total-time);    
     @keyframes zoom-in-out {
         0% {
             transform: none;
         }
 
-        #{percentage($zoom-in-start)} {
+        #{percentage($transition-in-start)} {
             transform: none;
         }
 
-        #{percentage($zoom-in-end)} {
+        #{percentage($transition-in-end)} {
             transform: scale($scale);
         }
 
-        #{percentage($zoom-out-start)} {
+        #{percentage($transition-out-start)} {
             transform: scale($scale);
         }
 
-        #{percentage($zoom-out-end)} {
+        #{percentage($transition-out-end)} {
             transform: none;
+        }
+    }
+}
+
+@mixin reverse-colors($initial-fill, $initial-background, $transition-duration, $wait-duration, $delay, $idle-time) {
+    $total-time: $transition-duration * 2 + $wait-duration + $delay + $idle-time;
+    $transition-in-start: $delay / $total-time;
+    $transition-in-end: $transition-in-start + ($transition-duration / $total-time);
+    $transition-out-start: $transition-in-end + ($wait-duration / $total-time);
+    $transition-out-end: $transition-out-start + ($transition-duration / $total-time);    
+    @keyframes reverse-colors {
+        0% {
+            background-color: $initial-background;
+            fill: $initial-fill;
+        }
+
+        #{percentage($transition-in-start)} {
+            background-color: $initial-background;
+            fill: $initial-fill;
+        }
+
+        #{percentage($transition-in-end)} {
+            background-color: $initial-fill;
+            fill: $initial-background;
+        }
+
+        #{percentage($transition-out-start)} {
+            background-color: $initial-fill;
+            fill: $initial-background;
+        }
+
+        #{percentage($transition-out-end)} {
+            background-color: $initial-background;
+            fill: $initial-fill;
         }
     }
 }

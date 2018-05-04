@@ -1,5 +1,5 @@
-$font-sans: Helvetica, sans-serif;
-$font-serif: Georgia, serif;
+$font-sans: 'Roboto Condensed', Helvetica, sans-serif;
+$font-serif: 'Roboto Slab', Georgia, serif;
 
 $color-white: white;
 $color-black: #333;
@@ -9,8 +9,11 @@ $color-green: #43C057;
 $color-light-grey: whitesmoke;
 $color-dark-grey: #e3e3e3;
 
+$font-size: 16px;
 $button-size: 3rem;
 $spacing-default: 1rem;
+$spacing-horizontal: 1.5rem;
 
 $header-height: $button-size + 2 * $spacing-default;
 $body-padding: $header-height + $spacing-default;
+$max-width: 900px
