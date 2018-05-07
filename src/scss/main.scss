@@ -1,6 +1,18 @@
 @import 'variables';
 @import 'animations';
 
+.sans-loader {
+  position: fixed;
+  top: -100px;
+  font-family: $font-sans-custom;  
+
+}
+.serif-loader {
+  position: fixed;
+  top: -100px;  
+  font-family: $font-serif-custom;
+}
+
 .hidden {
   display: none;
 }
@@ -14,7 +26,11 @@ html, body {
 html {
   font-family: $font-sans;
   font-size: $font-size;
-  line-height: 1.33em;
+  line-height: 1.5em;
+}
+
+html.loaded {
+  font-family: $font-sans-custom;
 }
 
 body {
@@ -30,8 +46,9 @@ div, article, ul, .button, footer, nav {
 
 footer {
   font-size: 0.83rem;
-  padding: $spacing-default #{$spacing-default + $spacing-horizontal};
+  padding: $spacing-default $spacing-horizontal;
   background-color: $color-dark-grey;  
+  margin-top: $spacing-default;
 }
 
 .button-wrapper {
@@ -44,7 +61,7 @@ footer {
   border-radius: $border-radius;
   display: flex;
   align-items: center;
-  box-shadow: 0 2px 2px 1px $color-dark-grey;
+  box-shadow: 2px 2px 2px 1px $color-dark-grey;
 
   .icon-wrapper {
     height: $button-size;
@@ -58,6 +75,7 @@ footer {
   .caption {
     padding: 0 #{$spacing-default * 1.5} 0 $spacing-default;
     margin: 0 auto;
+    text-align: center;
   }
 }
 
@@ -90,7 +108,8 @@ footer {
 .menu-toggle {
   .icon-wrapper {
     background-color: $color-darker-grey;
-  }
+    background: linear-gradient(rgb(154, 154, 154),rgb(102, 102, 102));
+  } 
 
   .hamburger-container {
     width: 50%;
@@ -105,7 +124,7 @@ body > .phone-wrapper {
   transition: 0.5s;
   position: fixed;
   top: 0;
-  left: 0;
+  left: 0.5rem;
   z-index: 1;
   opacity: 0;
 }
@@ -113,12 +132,14 @@ body > .phone-wrapper {
 body > .toggle-wrapper {
   position: fixed;
   top: 0;
-  right: 0;
+  right: 0.5rem;
   z-index:10;
 }
 
 .phone-button {
-  background-color: $color-green;
+  background-color: $color-green; // rgb(67,192,87)
+  background: linear-gradient(rgb(74,211,96),rgb(59,173,78));  
+  background: linear-gradient(rgb(81,230,105),rgb(52,154,69));  
   color: $color-white;
 
   .icon-wrapper {
@@ -134,7 +155,7 @@ body > .toggle-wrapper {
   }
 }
 
-h1, h2, h3, h3 {
+h1, h2, h3, h4 {
   font-family: $font-serif;
   font-weight: normal;
   color: $color-light-blue;  
@@ -168,6 +189,10 @@ h4 {
   line-height: 1.125rem;
   color: $color-light-blue;
   text-align: center;
+}
+
+html.loaded .title {
+  font-family: $font-sans-custom;
 }
 
 .intro {
@@ -205,7 +230,7 @@ a {
   background-position: center;
   background-size: cover;
   border-radius: 50%;
-  box-shadow: 0 2px 2px 1px $color-dark-grey;
+  box-shadow: 0 0 2px 1px $color-dark-grey;
 }
 
 nav {
@@ -256,23 +281,23 @@ nav.opened {
 }
 
 .hero {
-  padding: $spacing-default;
+  box-sizing: border-box;
+  padding: 0;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  justify-content: space-evenly;
+  min-height: 100%;
+  margin-bottom: $spacing-default;
 
   .main {
-    flex-grow: 1;
     background-color: $color-white;
-    box-shadow: 3px 3px 3px 0px $color-dark-grey;
-    border-radius: 5px;
-    flex-grow: 1;
   }
 }
 
 .services {
   display: flex;
   flex-direction: column;
-  padding: 0 $spacing-default $spacing-default;
+  padding: 0;
 }
 
 svg#defs {
