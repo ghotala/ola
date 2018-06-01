@@ -1,0 +1,13 @@
+@import 'main';
+
+@media (min-width: 550px) {
+  @import '550px';
+}
+
+@media (min-width: 700px) {
+  @import '700px';
+}
+
+@media (min-width: 960px) {
+  @import '960px';
+}

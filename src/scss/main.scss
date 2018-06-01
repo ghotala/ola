@@ -1,5 +1,4 @@
 @import 'variables';
-@import 'animations';
 
 .hidden {
   display: none;
@@ -12,9 +11,13 @@ html, body {
 }
 
 html {
-  font-family: $font-sans;
+  font-family: $font-sans-preload;
   font-size: $font-size;
   line-height: $line-height;
+
+  &.fonts-loaded {
+    font-family: $font-sans;
+  }
 }
 
 body {
@@ -113,24 +116,18 @@ footer {
   }
 }
 
-@include buzz(2%, 2, 16, 2, 8);
-@include zoom-in-out(1.33, 0.5, 3, 2, 6);
-@include reverse-colors($color-white, $color-green, 0.5, 3, 2, 6);
-
 .phone-button {
   background-color: $color-green;
   color: $color-white;
 
   .icon-wrapper {
-    background-color: $color-green;
-    animation: zoom-in-out 12s infinite, reverse-colors 12s infinite;
+    background-color: $color-white;
     border: 1px $color-green solid;
-    fill: $color-white;
+    fill: $color-green;
   }
 
   svg {
     width: 50%;
-    animation: buzz 12s infinite;
   }
 }
 
@@ -150,9 +147,14 @@ header {
 }
 
 h1, h2, h3, h3 {
-  font-family: $font-serif;
+  font-family: $font-serif-preload;
   font-weight: normal;
   color: $color-light-blue;  
+}
+.fonts-loaded {
+  h1, h2, h3, h3 {
+    font-family: $font-serif;
+  }
 }
 h1 { 
   font-size: 1.825rem;
@@ -172,17 +174,26 @@ h4 {
 }
 
 .name {
-  font-family: $font-serif;
+  font-family: $font-serif-preload;
   text-align: center;
   font-size: 1.5rem;
 }
-
+.fonts-loaded {
+  .name {
+    font-family: $font-serif;
+  } 
+}
 .title {
-  font-family: $font-sans;
+  font-family: $font-sans-preload;
   font-size: 1.25rem;
   line-height: 1.125rem;
   color: $color-light-blue;
   text-align: center;
+}
+.fonts-loaded {
+  .title {
+    font-family: $font-sans;
+  } 
 }
 
 .intro {
@@ -216,7 +227,7 @@ a {
 
 .photo {
   background-color: $color-white;
-  background: url('../assets/aleksandra-hotala.jpg');
+  background: url('assets/aleksandra-hotala.jpg');
   background-position: center;
   background-size: cover;
   border-radius: 50%;
@@ -283,4 +294,17 @@ svg#defs {
   position: fixed;
   z-index: -1;
   height: 0;
+}
+
+.font-loader {
+  position: fixed;
+  top: -100;
+}
+
+.font-loader-sans {
+  font-family: $font-sans;
+}
+
+.font-loader-serif {
+  font-family: $font-serif;
 }

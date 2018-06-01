@@ -2,9 +2,10 @@ module.exports = function (grunt, options) {
   return {
     all: {
       basePath: 'src/html',
-      template: 'template.html',
+      template: 'template.html',      
       partials: ['index', 'terapia-indywidualna'],
-      dest: 'tmp'
+      dest: 'tmp',
+      minifiedCss: 'tmp/all.css'
     }
   };
 };

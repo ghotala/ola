@@ -9,6 +9,7 @@ module.exports = function(grunt) {
     var destPath = data.dest;
     var templateFile = basePath + '/' + data.template;
     var partials = data.partials;
+    var minifiedCssFile = data.minifiedCss;
 
     grunt.log.writeln('Received data: ' + JSON.stringify(data));
 
@@ -35,6 +36,13 @@ module.exports = function(grunt) {
         return;
       }
 
+      var minifiedCss;
+      grunt.log.writeln('Checking for minified css [' + minifiedCssFile + ']')
+      if (!grunt.file.exists(minifiedCssFile)) {
+        console.log.errorlns('Minified css file not found!');
+        return;
+      }
+
       grunt.log.writeln('Reading template file');
       var template = grunt.file.read(templateFile);
 
@@ -43,6 +51,9 @@ module.exports = function(grunt) {
 
       grunt.log.writeln('Reading main content file');
       var mainContent = grunt.file.read(mainContentFile);
+
+      grunt.log.writeln('Reading minified css file');
+      var minifiedCss = grunt.file.read(minifiedCssFile);      
 
       var lowerContent;
       grunt.log.writeln('Checking for lower content file [' + lowerContentFile + ']')
@@ -58,7 +69,8 @@ module.exports = function(grunt) {
         title: config.title,
         description: config.description,
         mainContent: mainContent,
-        lowerContent: lowerContent
+        lowerContent: lowerContent,
+        inlineCss: minifiedCss
       };
 
       grunt.log.writeln('Processing template');
@@ -74,5 +86,5 @@ module.exports = function(grunt) {
     grunt.log.oklns('Done');
   });
 
-  grunt.registerTask('default',['clean:tmp','integrateTemplate','sass','clean:public','copy']);
+  grunt.registerTask('default',['clean:tmp','sass','integrateTemplate','clean:public','copy']);
 }
