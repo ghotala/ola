@@ -14,7 +14,7 @@ html, body {
 html {
   font-family: $font-sans;
   font-size: $font-size;
-  line-height: 1.33em;
+  line-height: $line-height;
 }
 
 body {
@@ -266,23 +266,17 @@ nav {
 }
 
 .hero {
-  padding: $spacing-default;
-  display: flex;
-  flex-direction: row;
+  padding: $spacing-default 0;
 
   .main {
-    flex-grow: 1;
     background-color: $color-white;
-    box-shadow: 3px 3px 3px 0px $color-dark-grey;
-    border-radius: 5px;
-    flex-grow: 1;
   }
 }
 
 .services {
   display: flex;
   flex-direction: column;
-  padding: 0 $spacing-default $spacing-default;
+  padding: 0 0 $spacing-default;
 }
 
 svg#defs {
